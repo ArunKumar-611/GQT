@@ -1,0 +1,55 @@
+package javapractice;
+
+import java.util.Scanner;
+
+// importing util package for scanner class
+
+
+/**
+ * @author welcome
+ *
+ */
+public class mathoperations {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		//program to find print prime numbers in given range
+		// creating two variables num and count and initialising count=0
+		int num,count=0;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter the number to be checked");
+		num = sc.nextInt();
+		// all prime numbers should be greater than 1
+		if(num>1)
+		{
+			// initialising the int type i value with 1 and checking if the given number is exactly divisible by two numbers or not in the given range of 1 to given number
+			for(int i=1 ; i<=num; i++)
+			{
+				//if number is exactly divisible by given i value increase count
+				if(num%i == 0)
+					count++;
+			}
+			// if count is >2 then it is divisible by more then two numbers so it is not a prime number else it is a prime number
+			if(count==2)
+			{
+				System.out.println("prime number : " +num);
+				
+			}
+			else
+			{
+				System.out.println("not a prime number : " +num);
+			}
+		}
+		else
+		{
+			System.out.println("not a prime number : " +num);
+		}
+		
+	}	
+	}
