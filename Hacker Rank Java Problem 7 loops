@@ -1,3 +1,14 @@
+/*
+We use the integers a ,b ,n and  to create the following series:
+
+You are given q queries in the form of a,b and n. For each query, print the series corresponding to the given , , and  values as a single line of  space-separated integers.
+
+Input Format
+
+The first line contains an integer, , denoting the number of queries.
+Each line  of the  subsequent lines contains three space-separated integers describing the respective , , and  values for that query.
+*/
+
 import java.util.*;
 import java.io.*;
 
