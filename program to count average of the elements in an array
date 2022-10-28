@@ -1,0 +1,27 @@
+package javapractice;
+
+import java.util.Scanner;
+
+public class ArrayAverage {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter the size of the array : ");
+		int size = sc.nextInt();
+		int sum = 0;
+		float average = 0.0f;
+		int [] arr = new int[size];
+		System.out.println("enter the elements into the array : ");
+		for(int i=0;i<=arr.length-1;i++) {
+			arr[i] = sc.nextInt();
+		}
+		for(int i=0;i<arr.length;i++) {
+			sum = sum + arr[i];
+		}
+		average = sum/size;
+		System.out.println("the average is : "+average);
+		
+	}
+
+}
