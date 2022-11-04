@@ -1,0 +1,46 @@
+/**
+ * 
+ */
+package javapractice;
+
+/**
+ * @author Arun
+ *
+ */
+/* a dog class is created and all the members are made as private which makes them not accessible to the outer classes
+ * 
+ * 
+ */
+class singleTonDog{
+	private String name;
+	private String Breed;
+	static singleTonDog d;
+	//and the constructor is also made as private so that object of this class should not be created outside of this class
+	private singleTonDog() {
+		 name = "tommy";
+		 Breed = "pug";
+	}
+	// and a static method is created so that the object can be created using the class name
+	public static singleTonDog getInstance() {
+		if(d == null) {
+		 d = new singleTonDog(); 
+	}
+	return d;
+}
+}
+public class singleton {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//only single object is created as singleton class is created
+		// so the reference variables will have same address
+	singleTonDog d1=singleTonDog.getInstance();
+	singleTonDog d2=singleTonDog.getInstance();
+	System.out.println(d1);
+	System.out.println(d2);
+	}
+
+}
