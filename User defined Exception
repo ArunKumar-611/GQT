@@ -1,0 +1,101 @@
+/* creation of user defined exceptions / custom exceptions by extending the Exception class */
+
+package com.GQT.Custom;
+
+public class UnderAgeException extends Exception{
+	public String getMessage() {
+		return "You are under age, Kindly have patience";
+	}
+}
+
+------------------------------------------------------------------
+package com.GQT.Custom;
+
+public class OlderAgeException extends Exception{
+	public String getMessage() {
+		return "you are old enough, kindly take rest";
+	}
+}
+
+------------------------------------------------------------------
+
+/* 
+
+in Applicant class we will be creating and throwing the exceptions using 'throw' keyword if the given constraints are not satisfied and delegating 
+the exception to the caller method using the 'throws' keyowrd and as the UnderAgeException and OlderAgeException are inherited from the Exception class
+they are also be considered as the checked exception classes so, when these exceptions are delegated the caller method must handle them.
+
+*/
+
+package com.GQT.Custom;
+
+import java.util.Scanner;
+
+public class Applicant {
+	int age;
+	
+	public void getAge() {
+		Scanner sc = new Scanner(System.in);
+		age = sc.nextInt();
+	}
+	public void verify() throws Exception {
+		if(age<18) {
+			UnderAgeException ue = new UnderAgeException();
+			System.out.println(ue.getMessage());
+			throw ue;
+		}
+		else if(age>=65) {
+			OlderAgeException oa = new OlderAgeException();
+			System.out.println(oa.getMessage());
+			throw oa;
+		}
+		else
+		{
+			System.out.println("collect your driving license");
+		}
+	}
+}
+
+-------------------------------------------------------------------------
+
+// the initiate() method in RTO class will be responsible for handling the exceptions generated
+
+package com.GQT.Custom;
+
+public class RTO {
+	public void initiate() {
+		Applicant a = new Applicant();
+		try {
+			a.getAge();
+			a.verify();
+		}
+		catch(Exception e){
+			try {
+				a.getAge();
+				a.verify();
+			}
+			catch(Exception f) {
+				System.out.println("kindly apply only if your age is between 18 to 65");
+				System.exit(0);
+			}
+		}
+	}
+	
+}
+
+
+------------------------------------------------------------------------------
+
+
+// the launch class will create the instance of RTO class and initiate() the applicant
+
+package com.GQT.Run;
+import com.GQT.Custom.*;
+public class Launch {
+
+	public static void main(String[] args) {
+		RTO rto = new RTO();
+		rto.initiate();
+	}
+
+}
